@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aether Weather</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Animated background -->
+  <div class="bg-canvas">
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <div class="bg-orb orb3"></div>
+  </div>
+
+  <div class="app-wrapper">
+
+    <!-- ── HEADER ── -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-icon">✦</span>
+        <span class="brand-name">Aether</span>
+      </div>
+      <p class="brand-tagline">Royal Weather Intelligence</p>
+    </header>
+
+    <!-- ── SEARCH ── -->
+    <section class="search-section">
+      <div class="search-bar">
+        <span class="search-icon">⌕</span>
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="Search any city in the world..."
+          autocomplete="off"
+        />
+        <button class="search-btn" onclick="searchCity()">Search</button>
+        <button class="locate-btn" onclick="getLocation()" title="Use my location">◎</button>
+      </div>
+
+      <!-- Recent Searches -->
+      <div class="recent-searches" id="recentSearches"></div>
+    </section>
+
+    <!-- ── LOADING ── -->
+    <div class="loading-state" id="loadingState">
+      <div class="loader-ring"></div>
+      <p>Fetching royal weather data…</p>
+    </div>
+
+    <!-- ── ERROR ── -->
+    <div class="error-state hidden" id="errorState">
+      <div class="error-icon">⚠</div>
+      <p id="errorMsg">City not found. Please try again.</p>
+    </div>
+
+    <!-- ── MAIN WEATHER ── -->
+    <main class="weather-main hidden" id="weatherMain">
+
+      <!-- Current Weather Card -->
+      <div class="current-card">
+        <div class="current-top">
+          <div class="current-location">
+            <h1 class="city-name" id="cityName">—</h1>
+            <p class="country-name" id="countryName">—</p>
+            <p class="current-date" id="currentDate">—</p>
+          </div>
+          <div class="current-icon-wrap">
+            <div class="weather-icon-big" id="weatherIconBig">☀️</div>
+            <p class="weather-desc" id="weatherDesc">—</p>
+          </div>
+        </div>
+
+        <div class="current-bottom">
+          <div class="temp-display">
+            <span class="temp-main" id="tempMain">—</span>
+            <span class="temp-unit">°C</span>
+          </div>
+          <div class="current-stats">
+            <div class="stat-item">
+              <span class="stat-icon">💧</span>
+              <span class="stat-label">Humidity</span>
+              <span class="stat-value" id="humidity">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">💨</span>
+              <span class="stat-label">Wind</span>
+              <span class="stat-value" id="wind">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">👁</span>
+              <span class="stat-label">Visibility</span>
+              <span class="stat-value" id="visibility">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🌡</span>
+              <span class="stat-label">Feels Like</span>
+              <span class="stat-value" id="feelsLike">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">🔵</span>
+              <span class="stat-label">Pressure</span>
+              <span class="stat-value" id="pressure">—</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-icon">☁️</span>
+              <span class="stat-label">Cloud Cover</span>
+              <span class="stat-value" id="clouds">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sunrise / Sunset -->
+      <div class="sun-card">
+        <div class="sun-item">
+          <span class="sun-icon">🌅</span>
+          <span class="sun-label">Sunrise</span>
+          <span class="sun-time" id="sunrise">—</span>
+        </div>
+        <div class="sun-divider"></div>
+        <div class="sun-item">
+          <span class="sun-icon">🌇</span>
+          <span class="sun-label">Sunset</span>
+          <span class="sun-time" id="sunset">—</span>
+        </div>
+      </div>
+
+      <!-- Hourly Forecast -->
+      <section class="forecast-section">
+        <h2 class="section-title"><span class="title-line"></span> Hourly Forecast <span class="title-line"></span></h2>
+        <div class="hourly-scroll" id="hourlyScroll"></div>
+      </section>
+
+      <!-- 5-Day Forecast -->
+      <section class="forecast-section">
+        <h2 class="section-title"><span class="title-line"></span> 5-Day Forecast <span class="title-line"></span></h2>
+        <div class="daily-grid" id="dailyGrid"></div>
+      </section>
+
+    </main>
+
+    <!-- ── EMPTY STATE ── -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">🌍</div>
+      <h2>Where in the world?</h2>
+      <p>Search a city or allow location access to see live weather.</p>
+    </div>
+
+    <footer class="app-footer">
+      <p>Powered by OpenWeatherMap &nbsp;✦&nbsp; Built with elegance</p>
+    </footer>
+
+  </div>
+
+  <script src="weather.js"></script>
+</body>
+</html>
