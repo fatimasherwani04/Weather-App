@@ -16,7 +16,7 @@ A royal, elegant weather app with live data from OpenWeatherMap. Clean dark them
 
 ## 🚀 Live Demo
 
-👉 **[View on GitHub Pages](https://YOUR_USERNAME.github.io/weather-app)**
+👉 **[View on GitHub Pages](https://fatimasherwani04.github.io/weather-app/)**
 
 ## 📁 Files
 
